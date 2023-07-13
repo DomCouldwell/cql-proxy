@@ -301,6 +301,15 @@ CQL Proxy will accumulate metrics internally and flush them to the tables every 
 
 The metrics tracking feature is not intended to run indefinitely.  It is intended to run for days up to a few months in order to collect data for a representative usage pattern and then it should be disabled and the data extracted and analyzed.  
 
+Please be aware that CQL Proxy works downstream of the DataStax Astra billing engine and any metrics captured by CQL-Proxy are only intended to give an indication of the number of credits that are / may be used. There are some known limitations due to this separation
+
+If a read request involves server-side filtering or aggregation of data, the data is measured before the filtering or aggregation takes place. Some examples of queries where this can happen are:
+* Queries that use the ALLOW FILTERING clause.
+* Queries that use the COUNT function.
+* Queries that use the GROUP BY clause.
+* Queries that do not request all columns from a row be returned.
+
+In these cases the CQL-Proxy will only capture the data passed back to the client.
 
 ## Known issues
 
