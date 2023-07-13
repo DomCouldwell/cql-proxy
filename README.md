@@ -303,8 +303,7 @@ The metrics tracking feature is not intended to run indefinitely.  It is intende
 
 Please be aware that CQL Proxy works downstream of the DataStax Astra billing engine and any metrics captured by CQL-Proxy are only intended to give an indication of the number of credits that are / may be used. There are some known limitations due to this separation
 
-If a read request involves in-memory filtering or aggregation of data in the server, the data is measured before the filtering or aggregation takes place. Some examples of queries where this can happen are:
-
+If a read request involves server-side filtering or aggregation of data, the data is measured before the filtering or aggregation takes place. Some examples of queries where this can happen are:
 * Queries that use the ALLOW FILTERING clause.
 * Queries that use the COUNT function.
 * Queries that use the GROUP BY clause.
